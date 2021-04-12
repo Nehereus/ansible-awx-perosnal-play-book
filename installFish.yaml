@@ -1,0 +1,21 @@
+- hosts: all
+  remote_user: root
+  tasks:
+
+  - name: add repo 
+    ansible.builtin.apt_repository:
+      repo: deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_10/ /
+      state: present
+
+  - name: add repo key
+    ansible.builtin.apt_key:
+      url: https://download.opensuse.org/repositories/shells:fish:release:3/Debian_10/Release.key
+      state: present    
+
+  - name: apt update and apt installfish
+    apt:
+      name: fish
+      state: present
+      update_cache: yes
+
+...
