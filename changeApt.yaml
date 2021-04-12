@@ -6,13 +6,27 @@
       repo: deb http://ftp.debian.org/debian buster main contrib
       state: absent
 
+  - name: remove 
     ansible.builtin.apt_repository:
       repo: deb http://ftp.debian.org/debian buster-updates main contrib
       state: absent      
-
+  - name: remove
     ansible.builtin.apt_repository:
       repo: deb http://security.debian.org buster/updates main contrib
       state: absent      
       
+  - name: Add specified repository into sources list
+    ansible.builtin.apt_repository:
+      repo: deb http://deb.debian.org/debian/ unstable main contrib non-free
+      state: present
       
+  - name: Add specified repository into sources list
+    ansible.builtin.apt_repository:
+      repo: deb-src http://deb.debian.org/debian/ unstable main contrib non-free
+      state: present
 
+  - name: Upgrade the OS (apt-get dist-upgrade)
+    apt:
+      upgrade: dist
+      update_cache: yes
+...
