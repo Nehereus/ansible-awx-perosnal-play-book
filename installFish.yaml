@@ -12,6 +12,6 @@
     shell: apt-get install fish -y
 
   - name: config fish as default shell
-    shell: echo /usr/local/bin/fish |  tee -a /etc/shells
-    shell: chsh -s /usr/local/bin/fish
+    shell: echo /usr/bin/fish |  tee -a /etc/shells
+    shell: chsh -s /usr/bin/fish
 ...
