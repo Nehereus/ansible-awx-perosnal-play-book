@@ -5,12 +5,12 @@
     ansible.builtin.command: echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_10/ /' |  tee /etc/apt/sources.list.d/shells:fish:release:3.list
 
   - name: add repo key
-    ansible.builtin.command: curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debian_10/Release.key | gpg --dearmor |  tee /etc/apt/trusted.gpg.d/shells_fish_release_3.gpg > /dev/null
+    shell: curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debian_10/Release.key | gpg --dearmor |  tee /etc/apt/trusted.gpg.d/shells_fish_release_3.gpg > /dev/null
 
   - name: apt update and apt installfish
-    ansible.builtin.command: apt update&& apt install fish
+    shell: apt update&& apt install fish
 
   - name: config fish as default shell
-    ansible.builtin.command: echo /usr/local/bin/fish |  tee -a /etc/shells
-    ansible.builtin.command: chsh -s /usr/local/bin/fish
+    shell: echo /usr/local/bin/fish |  tee -a /etc/shells
+    shell: chsh -s /usr/local/bin/fish
 ...
