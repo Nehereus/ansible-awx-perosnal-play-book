@@ -8,10 +8,8 @@
     shell: curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debian_10/Release.key | gpg --dearmor |  tee /etc/apt/trusted.gpg.d/shells_fish_release_3.gpg > /dev/null
 
   - name: apt update and apt installfish
-    apt:
-      name: fish
-      update_cache: yes
-
+    shell: apt update
+    shell: apt-get install fish -y
 
   - name: config fish as default shell
     shell: echo /usr/local/bin/fish |  tee -a /etc/shells
