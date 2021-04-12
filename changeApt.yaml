@@ -1,0 +1,7 @@
+- hosts: all
+  remote_user: root
+  tasks:
+  - name: Remove specified repository from sources list
+    ansible.builtin.apt_repository:
+      repo: deb http://ftp.debian.org/debian buster main contrib
+      state: absent
